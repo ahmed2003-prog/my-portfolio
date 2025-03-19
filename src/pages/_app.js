@@ -1,5 +1,5 @@
 // src/pages/_app.js
-import '../../src/styles/global.css';
+import '../styles/global.css';
 import '../styles/link.css';
 import { AnimatePresence, motion } from 'framer-motion';
 import Layout from '../components/layout';
