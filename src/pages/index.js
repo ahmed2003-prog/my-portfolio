@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
-// Dynamically import FontAwesomeIcon to avoid hydration error
 const FontAwesomeIcon = dynamic(() => import('@fortawesome/react-fontawesome').then((mod) => mod.FontAwesomeIcon), { ssr: false });
 
 export default function Index() {
@@ -36,7 +35,7 @@ export default function Index() {
   }, []);
 
   return (
-    <div className="relative min-h-screen flex flex-col items-center justify-center bg-black text-green-500 font-mono">
+    <div className="relative min-h-screen flex flex-col items-center justify-center bg-black text-green-500 font-mono px-4">
       <div className="absolute inset-0 z-0 pointer-events-none">
         {floatingDots.map((dot, i) => (
           <div
@@ -51,23 +50,22 @@ export default function Index() {
           />
         ))}
       </div>
-      <div className="absolute top-10 flex space-x-8 z-10">
-        <a href="https://www.linkedin.com/in/ahmed-nadeem-579897282/" target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon icon={['fab', 'linkedin']} className="text-5xl hover:text-green-300" />
-        </a>
-        <a href="https://github.com/ahmed2003-prog?tab=repositories" target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon icon={['fab', 'github']} className="text-5xl hover:text-green-300" />
-        </a>
-        <a href="https://www.upwork.com/freelancers/~014f6bf201362dd321?mp_source=share" target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon icon={['fab', 'upwork']} className="text-5xl hover:text-green-300" />
-        </a>
-        <a href="https://wa.me/923336162633" target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon icon={['fab', 'whatsapp']} className="text-5xl hover:text-green-300" />
-        </a>
+
+      <div className="absolute top-10 flex flex-wrap gap-4 md:gap-8 justify-center z-10">
+        {[
+          { href: "https://www.linkedin.com/in/ahmed-nadeem-579897282/", icon: ['fab', 'linkedin'] },
+          { href: "https://github.com/ahmed2003-prog?tab=repositories", icon: ['fab', 'github'] },
+          { href: "https://www.upwork.com/freelancers/~014f6bf201362dd321?mp_source=share", icon: ['fab', 'upwork'] },
+          { href: "https://wa.me/923336162633", icon: ['fab', 'whatsapp'] },
+        ].map(({ href, icon }, index) => (
+          <a key={index} href={href} target="_blank" rel="noopener noreferrer">
+            <FontAwesomeIcon icon={icon} className="text-3xl md:text-5xl hover:text-green-300" />
+          </a>
+        ))}
       </div>
 
-      <div className="border-4 border-green-500 p-8 rounded-lg shadow-lg max-w-2xl w-full text-center relative z-10">
-        <div className="text-lg md:text-2xl mb-8">
+      <div className="border-4 border-green-500 p-6 md:p-8 rounded-lg shadow-lg max-w-2xl w-full text-center relative z-10">
+        <div className="text-md md:text-2xl mb-6">
           {text}
           <span className="animate-blink">|</span>
         </div>
@@ -76,20 +74,20 @@ export default function Index() {
           href="/cv/Ahmed.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="mb-8 text-lg underline hover:text-green-300"
+          className="mb-6 text-md md:text-lg underline hover:text-green-300 block"
         >
           Download Profile
         </a>
 
-        <h1 className="text-4xl md:text-6xl font-bold mb-12">AHMED NADEEM</h1>
+        <h1 className="text-3xl md:text-5xl font-bold mb-8">AHMED NADEEM</h1>
 
-        <div className="flex space-x-8 mb-12 justify-center">
+        <div className="flex flex-wrap gap-8 justify-center mb-8">
           <Link href="/my_projects" className="link-style">My Projects</Link>
           <Link href="/my_work_experience" className="link-style">Work Experience</Link>
-          <Link href="/my_certs_and_licenses" className="link-style">Certifications and Licenses</Link>
+          <Link href="/my_certs_and_licenses" className="link-style">Certifications</Link>
         </div>
 
-        <div className="text-center">
+        <div className="text-center text-sm md:text-base">
           <p>Email: <a href="mailto:ahmedprog2003@gmail.com" className="underline hover:text-green-300">Ahmed Nadeem</a></p>
           <p>Contact: <a href="tel:+923336162633" className="underline hover:text-green-300">Phone Number</a></p>
         </div>
