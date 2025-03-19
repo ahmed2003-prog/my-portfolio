@@ -1,0 +1,15 @@
+/* links.css */
+
+.link-style {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #00ff00;
+    transition: all 0.3s ease-in-out;
+    letter-spacing: 2px;
+  }
+  .link-style:hover {
+    color: #33ff33;
+    text-shadow: 0 0 12px #33ff33, 0 0 24px #33ff33, 0 0 48px #66ff66;
+    transform: scale(1.1) rotate(-2deg);
+  }
