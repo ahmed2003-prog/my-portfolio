@@ -38,13 +38,18 @@ const Work = () => {
   }, []);
 
   return (
-    <div className="h-auto bg-black text-green-500 font-mono p-8 pb-20 relative overflow-hidden">
-      <div className="mb-8">
+    <div className="min-h-screen bg-black text-green-500 font-mono p-4 md:p-8 pb-16 relative overflow-hidden">
+      {/* Home Button */}
+      <div className="mb-6 flex justify-center">
         <Link href="/" passHref>
-          <button className="text-lg hover:text-green-300">Home</button>
+          <button className="text-lg md:text-xl hover:text-green-300 transition-all">
+            Home
+          </button>
         </Link>
       </div>
-      <h1 className="text-5xl font-bold mt-2 mb-6 tracking-widest neon-text text-center crt-effect">
+
+      {/* Title */}
+      <h1 className="text-4xl md:text-5xl font-bold mt-2 mb-6 tracking-widest neon-text text-center crt-effect">
         WORK EXPERIENCE
       </h1>
 
@@ -55,7 +60,7 @@ const Work = () => {
 
       {isClient && (
         <motion.div
-          className="space-y-8 relative z-10"
+          className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 relative z-10"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -63,15 +68,15 @@ const Work = () => {
           {workExperience.map((work, index) => (
             <motion.div
               key={index}
-              className="bg-gray-900 p-4 rounded-lg shadow-md hover:scale-104 hover:shadow-neon-green transform transition-transform duration-300"
+              className="bg-gray-900 p-4 rounded-lg shadow-md hover:scale-105 hover:shadow-neon-green transform transition-transform duration-300"
             >
-              <h2 className="text-2xl font-semibold mb-2">{work.company}</h2>
-              <h3 className="text-xl mb-1">{work.role}</h3>
+              <h2 className="text-xl md:text-2xl font-semibold mb-2">{work.company}</h2>
+              <h3 className="text-lg md:text-xl mb-1">{work.role}</h3>
               <p className="text-sm text-gray-400 mb-4">{work.duration}</p>
               <p className="mb-4">{work.description}</p>
               <div className="flex flex-wrap gap-2">
                 {work.skills.map((skill, i) => (
-                  <span key={i} className="px-3 py-1 text-sm bg-green-700 text-black rounded-full shadow-neon-green">
+                  <span key={i} className="px-3 py-1 text-xs md:text-sm bg-green-700 text-black rounded-full shadow-neon-green">
                     {skill}
                   </span>
                 ))}
